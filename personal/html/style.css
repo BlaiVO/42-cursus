@@ -1,0 +1,10 @@
+tr {
+    border: solid white 1px;
+    border-radius: 200;
+    background-color: grey;
+    font-size: 100px;
+}
+
+th {
+    border-radius: 200;
+}
