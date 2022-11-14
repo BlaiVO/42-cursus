@@ -1,8 +1,9 @@
 tr {
     border: solid white 1px;
     border-radius: 200;
-    background-color: grey;
+    background-color: silver;
     font-size: 100px;
+    font-style: sans-serif;
 }
 
 th {
