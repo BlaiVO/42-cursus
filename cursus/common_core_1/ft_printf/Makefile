@@ -6,7 +6,7 @@
 #    By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 17:47:37 by blvilarn          #+#    #+#              #
-#    Updated: 2023/01/09 19:31:58 by blvilarn         ###   ########.fr        #
+#    Updated: 2023/01/10 17:28:10 by blvilarn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = libftprintf.a
 HEADER = ft_printf.h
 FLAGS = -Wall -Werror -Wextra
-SRC = ft_printf.c utils.c
+SRC = ft_printf.c str_utils.c int_utils.c
 OBJS = $(SRC:.c=.o)
 
 #RULES
