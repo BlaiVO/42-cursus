@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 17:33:29 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/01/10 19:49:41 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:22:18 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	print_content(const char *str, va_list ptr, int *i, int *len)
 	if (str[*i] == 'd' || str[*i] == 'i')
 		return (ft_putnumber(va_arg(ptr, int), i, len));
 	if (str[*i] == 'u')
-		return (-1);
+		return (ft_putnumber(va_arg(ptr, unsigned int), i, len));
 	if (str[*i] == 'x')
 		return (-1);
 	if (str[*i] == 'X')

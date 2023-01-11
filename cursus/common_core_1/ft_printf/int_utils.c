@@ -6,43 +6,48 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:29:19 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/01/10 19:54:13 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:24:44 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_absval(int num)
+static int	recursiva(long long n, int *len)
 {
-	if (num < 0)
-		num = -num;
-	return (num);
+	char	c;
+
+	if (n >= 10)
+	{
+		if (recursiva(n / 10, len) == -1)
+			return (-1);
+	}
+	c = '0' + n % 10;
+	if (write(1, &c, 1) != 1)
+		return (-1);
+	(*len)++;
+	return (0);
 }
 
-int	ft_putnumber(int n, int *i, int *len)
+int	ft_putnumber(long long n, int *i, int *len)
 {
-	char	abs;
-
 	(*i)++;
-	if (n == 0)
+	if (n == -2147483648)
 	{
-		(*len)++;
-		if (write(1, "0", 1) != 1)
+		if (write(1, "-2147483648", 11) != 11)
 			return (-1);
+		(*len) += 11;
 	}
-	if (n < 0)
+	else
 	{
-		(*len)++;
-		if (write(1, "-", 1) != 1)
+		if (n < 0)
+		{
+			if (write(1, "-", 1) != 1)
+				return (-1);
+			(*len)++;
+			n = -n;
+		}
+		if (recursiva(n, len) == -1)
 			return (-1);
-	}
-	while (n)
-	{
-		abs = ft_absval(n % 10) + '0';
-		(*len)++;
-		if (write(1, &abs, 1) != 1)
-			return (-1);
-		n /= 10;
 	}
 	return (0);
 }
