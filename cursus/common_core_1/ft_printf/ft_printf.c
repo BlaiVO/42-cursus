@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 17:33:29 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/01/11 19:22:18 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/01/12 20:06:45 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,20 @@ int	print_content(const char *str, va_list ptr, int *i, int *len)
 	if (str[*i] == 's')
 		return (ft_putstr(va_arg(ptr, char *), i, len));
 	if (str[*i] == 'p')
-		return (-1);
+	{
+		if (write(1, "0x", 2) != 2)
+			return (-1);
+		(*len) += 2;
+		return (pnbr_b("0123456789abcdef", va_arg(ptr, unsigned long), i, len));
+	}
 	if (str[*i] == 'd' || str[*i] == 'i')
 		return (ft_putnumber(va_arg(ptr, int), i, len));
 	if (str[*i] == 'u')
 		return (ft_putnumber(va_arg(ptr, unsigned int), i, len));
 	if (str[*i] == 'x')
-		return (-1);
+		return (pnbr_b("0123456789abcdef", va_arg(ptr, unsigned int), i, len));
 	if (str[*i] == 'X')
-		return (-1);
+		return (pnbr_b("0123456789ABCDEF", va_arg(ptr, unsigned int), i, len));
 	if (str[*i] == '%')
 		return (ft_putchar('%', i, len));
 	else
