@@ -1,0 +1,6 @@
+objects
+*.o
+*.a
+client
+server
+.vscode
