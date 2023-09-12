@@ -6,11 +6,11 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 16:59:02 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/01/13 14:00:58 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:42:02 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_putchar(char c, int *i, int *len)
 {
@@ -39,14 +39,4 @@ int	ft_putstr(char *s, int *i, int *len)
 		j++;
 	}
 	return (0);
-}
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
 }

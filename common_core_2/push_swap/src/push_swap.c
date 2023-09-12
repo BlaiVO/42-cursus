@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 16:31:42 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/08 13:53:24 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/12 20:16:53 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,18 @@
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	*nums;
+	int		*nums;
+	t_num	*stack;
 
-	i = 0;
-	nums = malloc((argc - 1) * sizeof(int));
-	while (i < argc)
+	if (argc == 1)
+		error("There must be at least 1 argument");
+	nums = get_nums_array(argc - 1, &argv[1]);
+	stack = create_stack(nums, argc - 1);
+	int	i = 0;
+	while (i < argc -1)
 	{
-		nums[i] = ft_atoi(argv[i + 1]);
+		ft_printf("val: %i, index: %i\n", stack[i].val, stack[i].index);
+		i++;
 	}
+	return (0);
 }

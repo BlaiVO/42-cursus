@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_endswith.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 19:07:37 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/05 16:45:00 by blvilarn         ###   ########.fr       */
+/*   Created: 2023/05/18 17:42:44 by blvilarn          #+#    #+#             */
+/*   Updated: 2023/05/18 19:21:30 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+int	ft_endswith(char *str, char *end)
 {
+	int	len_str;
+	int	len_end;
 	int	i;
+	int	y;
 
-	i = 0;
-	while (s[i] != '\0')
+	if (!str || !end)
+		return (0);
+	len_str = ft_strlen(str);
+	len_end = ft_strlen(end);
+	if (len_end > len_str)
+		return (0);
+	i = len_str - len_end;
+	y = 0;
+	while (str[i])
 	{
-		if (s[i] == ((char )c))
-			return (((char *)&s[i]));
-		i++;
+		if (str[i++] != end[y++])
+			return (0);
 	}
-	if ('\0' == ((char )c))
-		return (((char *)&s[i]));
-	return (NULL);
+	return (1);
 }

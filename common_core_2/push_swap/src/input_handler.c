@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   input_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/23 19:07:37 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/05 16:45:00 by blvilarn         ###   ########.fr       */
+/*   Created: 2023/09/12 19:25:17 by blvilarn          #+#    #+#             */
+/*   Updated: 2023/09/12 20:16:08 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-char	*ft_strchr(const char *s, int c)
+int	*get_nums_array(int size, char **input)
 {
 	int	i;
+	int	*nums;
 
 	i = 0;
-	while (s[i] != '\0')
+	nums = malloc((size) * sizeof(int));
+	if (!nums)
+		error("Malloc error");
+	while (i < size)
 	{
-		if (s[i] == ((char )c))
-			return (((char *)&s[i]));
+		if (ft_isnum(input[i]))
+			nums[i] = ft_atoi(input[i]);
+		else
+		{
+			free_the_numbers(nums);
+			error("All arguments must be convertible to int");
+		}
 		i++;
 	}
-	if ('\0' == ((char )c))
-		return (((char *)&s[i]));
-	return (NULL);
+	return (nums);
 }

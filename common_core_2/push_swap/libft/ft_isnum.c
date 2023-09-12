@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_input.c                                     :+:      :+:    :+:   */
+/*   ft_isnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 15:29:48 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/08 13:49:54 by blvilarn         ###   ########.fr       */
+/*   Created: 2023/09/12 18:10:57 by blvilarn          #+#    #+#             */
+/*   Updated: 2023/09/12 20:09:45 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "libft.h"
 
-t_node	*parse_input(char *input)
+int	ft_isnum(char *str)
 {
-    
-}
+	int	i;
 
-char	*validate_input(char **argc)
-{
+	i = 0;
+	while (ft_iswhitespace(str[i]))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
