@@ -6,7 +6,7 @@
 #    By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/21 15:43:54 by blvilarn          #+#    #+#              #
-#    Updated: 2023/09/12 18:28:25 by blvilarn         ###   ########.fr        #
+#    Updated: 2023/09/13 18:45:27 by blvilarn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen
 	  ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
 	  ft_endswith.c get_next_line.c get_next_line_utils.c ft_printf.c str_utils.c int_utils.c \
 	  ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
-	  ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_strjoin_free.c ft_atod.c ft_iswhitespace.c ft_isnum.c
+	  ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_strjoin_free.c ft_atod.c ft_iswhitespace.c ft_isnum.c \
+	  ft_memcontains.c
+
 OBJS = $(SRC:.c=.o)
 
 #RULES

@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 16:31:42 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/12 20:16:53 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/13 19:01:33 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int	main(int argc, char **argv)
 		ft_printf("val: %i, index: %i\n", stack[i].val, stack[i].index);
 		i++;
 	}
+	ft_printf("%i\n", is_sorted(stack, argc - 1));
 	return (0);
 }

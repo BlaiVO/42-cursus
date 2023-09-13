@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 13:20:17 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/12 20:22:59 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/13 19:00:35 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,4 @@ void	bubble_sort(int *nums, int size);
 void	free_the_numbers(int *nums);
 int		*get_nums_array(int argc, char **argv);
 t_num	*create_stack(int *nums, int len);
+int		is_sorted(t_num *stack, int size);

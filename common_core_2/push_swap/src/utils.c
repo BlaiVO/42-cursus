@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 18:32:12 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/12 19:58:48 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/13 19:00:01 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,18 @@ void	free_the_numbers(int *nums)
 {
 	if (nums)
 		free(nums);
+}
+
+int	is_sorted(t_num *stack, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		if (i != stack[i].index)
+			return (0);
+		i++;
+	}
+	return (1);
 }

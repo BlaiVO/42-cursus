@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 19:25:38 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/12 20:17:43 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:47:21 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ static void	indexate_stack(int *nums, t_num *stack, int size)
 		while (j < size)
 		{
 			if (nums[j] == stack[i].val)
+			{
 				stack[i].index = j;
+				break ;
+			}
 			j++;
 		}
 		i++;
