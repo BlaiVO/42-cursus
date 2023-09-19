@@ -6,13 +6,12 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 19:25:38 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/19 14:07:03 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/19 16:14:21 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static		t_num	init_num(int n);
 static void	index_stack(int *nums, t_stack stack);
 
 t_stack	create_stack(int *nums, int size)
@@ -20,25 +19,31 @@ t_stack	create_stack(int *nums, int size)
 	int		i;
 	t_stack	stack;
 
-	i = 0;
+	i = -1;
 	stack.size = size;
+	stack.top = -1;
 	stack.nums = malloc(size * sizeof(t_num));
 	if (!stack.nums)
 	{
 		free_the_numbers(nums);
 		error("Malloc error");
 	}
-	while (i < size && nums)
+	while (++i < size)
 	{
-		stack.nums[i] = init_num(nums[i]);
-		i++;
+		if (nums)
+			stack.nums[i] = init_num(nums[i]);
+		else
+			stack.nums[i] = init_num(-1);
 	}
 	if (nums)
+	{
 		index_stack(nums, stack);
+		stack.top = 0;
+	}
 	return (stack);
 }
 
-static t_num	init_num(int n)
+t_num	init_num(int n)
 {
 	t_num	num;
 
