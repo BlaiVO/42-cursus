@@ -6,33 +6,35 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 19:25:38 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/13 18:47:21 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/19 14:07:03 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-static t_num	init_num(int n);
-static void		indexate_stack(int *nums, t_num *stack, int size);
+static		t_num	init_num(int n);
+static void	index_stack(int *nums, t_stack stack);
 
-t_num	*create_stack(int *nums, int size)
+t_stack	create_stack(int *nums, int size)
 {
 	int		i;
-	t_num	*stack;
+	t_stack	stack;
 
 	i = 0;
-	stack = malloc(size * sizeof(t_num));
-	if (!stack)
+	stack.size = size;
+	stack.nums = malloc(size * sizeof(t_num));
+	if (!stack.nums)
 	{
 		free_the_numbers(nums);
 		error("Malloc error");
 	}
-	while (i < size)
+	while (i < size && nums)
 	{
-		stack[i] = init_num(nums[i]);
+		stack.nums[i] = init_num(nums[i]);
 		i++;
 	}
-	indexate_stack(nums, stack, size);
+	if (nums)
+		index_stack(nums, stack);
 	return (stack);
 }
 
@@ -45,21 +47,21 @@ static t_num	init_num(int n)
 	return (num);
 }
 
-static void	indexate_stack(int *nums, t_num *stack, int size)
+static void	index_stack(int *nums, t_stack stack)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	bubble_sort(nums, size);
-	while (i < size)
+	bubble_sort(nums, stack.size);
+	while (i < stack.size)
 	{
 		j = 0;
-		while (j < size)
+		while (j < stack.size)
 		{
-			if (nums[j] == stack[i].val)
+			if (nums[j] == stack.nums[i].val)
 			{
-				stack[i].index = j;
+				stack.nums[i].index = j;
 				break ;
 			}
 			j++;
