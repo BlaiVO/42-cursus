@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:45:51 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/19 17:29:58 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:28:15 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sort_stack(t_stack *stack_a, t_stack *stack_b)
 	int	i;
 
 	i = 0;
-	while (!is_sorted(*stack_a) && i < 2)
+	while (!is_sorted(*stack_a) && i < 10)
 	{
 		radix(stack_a, stack_b, i);
 		i++;

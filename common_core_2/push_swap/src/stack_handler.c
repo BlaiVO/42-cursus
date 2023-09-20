@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 19:25:38 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/19 16:14:21 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:32:31 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_stack	create_stack(int *nums, int size)
 
 	i = -1;
 	stack.size = size;
-	stack.top = -1;
+	stack.top = size;
 	stack.nums = malloc(size * sizeof(t_num));
 	if (!stack.nums)
 	{
