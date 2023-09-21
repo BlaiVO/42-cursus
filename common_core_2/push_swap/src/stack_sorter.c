@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:45:51 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/20 17:28:15 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/21 20:11:21 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,27 @@
 
 static void	radix(t_stack *a, t_stack *b, int bits);
 
-void	sort_stack(t_stack *stack_a, t_stack *stack_b)
+void	sort_big_stack(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 
 	i = 0;
-	while (!is_sorted(*stack_a) && i < 10)
+	while (!is_sorted(*stack_a))
 	{
 		radix(stack_a, stack_b, i);
 		i++;
+	}
+}
+
+void	sort_small_stack(t_stack *a, t_stack *b)
+{
+	(void)b;
+	if (!is_sorted(*a))
+	{
+		if (a->size == 2)
+			r('a', a);
+		if (a->size == 3)
+			sort_three(a);
 	}
 }
 
@@ -31,9 +43,9 @@ static void	radix(t_stack *a, t_stack *b, int bits)
 	int	i;
 
 	i = 0;
-	while (i < a->size)
+	while (i < a->size && !is_sorted(*a))
 	{
-		if (a->nums[i].index & (1 << bits))
+		if (!(a->nums[a->top].index & (1 << bits)))
 			p('b', b, a);
 		else
 			r('a', a);

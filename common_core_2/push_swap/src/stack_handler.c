@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 19:25:38 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/20 13:32:31 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/21 17:15:25 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_stack	create_stack(int *nums, int size)
 	if (!stack.nums)
 	{
 		free_the_numbers(nums);
-		error("Malloc error");
+		error();
 	}
 	while (++i < size)
 	{

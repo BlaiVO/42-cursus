@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 19:10:54 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/20 13:29:37 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/21 20:09:28 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,21 @@
 - rrr : rra and rrb at the same time.
 */
 
-void	s(t_stack *stack, char letter)
+void	s(char letter, t_stack *s)
 {
 	t_num	aux;
 
-	aux = stack->nums[stack->top];
-	stack->nums[stack->top] = stack->nums[1];
-	stack->nums[1] = aux;
+	aux = s->nums[s->top];
+	s->nums[s->top] = s->nums[s->top + 1];
+	s->nums[s->top + 1] = aux;
 	if (letter == 'a' || letter == 'b')
 		ft_printf("s%c\n", letter);
 }
 
 void	ss(t_stack *a, t_stack *b)
 {
-	s(a, 's');
-	s(b, 's');
+	s('s', a);
+	s('s', b);
 	ft_printf("ss\n");
 }
 
@@ -76,6 +76,22 @@ void	r(char letter, t_stack *s)
 		s->nums[i] = s->nums[i + 1];
 		i++;
 	}
-	s->nums[i] = aux;
+	s->nums[i - 1] = aux;
 	ft_printf("r%c\n", letter);
+}
+
+void	rr(char letter, t_stack *s)
+{
+	int		i;
+	t_num	aux;
+
+	i = s->size;
+	aux = s->nums[s->size - 1];
+	while (i > s->top)
+	{
+		s->nums[i] = s->nums[i - 1];
+		i--;
+	}
+	s->nums[s->top] = aux;
+	ft_printf("rr%c\n", letter);
 }
