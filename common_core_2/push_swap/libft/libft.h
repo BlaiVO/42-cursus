@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:00:54 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/13 18:45:03 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:10:18 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 double	ft_atod(const char *str);
+long	ft_atol(const char *str);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));

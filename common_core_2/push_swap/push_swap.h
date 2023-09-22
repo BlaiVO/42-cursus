@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 13:20:17 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/21 20:11:14 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:04:14 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	sort_small_stack(t_stack *a, t_stack *b);
 int		find_min(t_stack s);
 int		find_max(t_stack s);
 void	sort_three(t_stack *a);
+void	sort_five(t_stack *a, t_stack *b);
+void	sort_four(t_stack *a, t_stack *b);
 
 //simple_operations
 void	p(char letter, t_stack *a, t_stack *b);

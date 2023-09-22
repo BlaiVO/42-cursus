@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 18:12:23 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/21 20:10:38 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:46:01 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	find_max(t_stack s)
 	max_val = -1;
 	while (i < s.size)
 	{
-		if (s.nums[i].index > max_val || max_val == -1)
+		if (s.nums[i].index > max_val)
 		{
 			max = i;
 			max_val = s.nums[i].index;
@@ -59,10 +59,39 @@ void	sort_three(t_stack *a)
 	int	max;
 
 	max = find_max(*a);
-	if (max == 1)
+	if (max == a->top + 1)
 		rr('a', a);
-	if (max == 0)
+	if (max == a->top)
 		r('a', a);
-	if (!is_sorted(*a))
+	if (a->nums[a->top].index > a->nums[a->top + 1].index)
+		s('a', a);
+}
+
+void	sort_four(t_stack *a, t_stack *b)
+{
+	while (b->top != b->size - 1)
+	{
+		if (a->nums[a->top].index == 0)
+			p('b', b, a);
+		else
+			r('a', a);
+	}
+	sort_three(a);
+	p('a', a, b);
+}
+
+void	sort_five(t_stack *a, t_stack *b)
+{
+	while (b->top != b->size - 2)
+	{
+		if (a->nums[a->top].index == 0 || a->nums[a->top].index == 1)
+			p('b', b, a);
+		else
+			r('a', a);
+	}
+	sort_three(a);
+	p('a', a, b);
+	p('a', a, b);
+	if (a->nums[a->top].index > a->nums[a->top + 1].index)
 		s('a', a);
 }

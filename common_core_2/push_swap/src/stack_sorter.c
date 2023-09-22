@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 13:45:51 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/21 20:11:21 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:47:02 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ void	sort_small_stack(t_stack *a, t_stack *b)
 			r('a', a);
 		if (a->size == 3)
 			sort_three(a);
+		if (a->size == 4)
+			sort_four(a, b);
+		if (a->size == 5)
+			sort_five(a, b);
 	}
 }
 

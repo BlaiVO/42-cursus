@@ -6,13 +6,13 @@
 #    By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 16:15:09 by blvilarn          #+#    #+#              #
-#    Updated: 2023/09/21 18:52:35 by blvilarn         ###   ########.fr        #
+#    Updated: 2023/09/22 16:50:35 by blvilarn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror -MMD
-FILES = push_swap.c input_handler.c utils.c stack_handler.c stack_sorter.c simple_operations.c \
+FILES = push_swap.c input_handler.c utils.c stack_handler.c stack_sorter.c operations.c \
 		testing_utils.c small_sorter.c
 
 SRC_DIR = src/
