@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 19:25:17 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/22 17:17:27 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/22 17:41:37 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	*get_nums_array(int size, char **input)
 		error();
 	while (i < size)
 	{
-		if (ft_atol(input[i]) > 2147483647 || ft_atol(input[i]) < -2147483648)
+		if (ft_atol(input[i]) > INT_MAX || ft_atol(input[i]) < INT_MIN)
 		{
 			free_the_numbers(nums);
 			error();
