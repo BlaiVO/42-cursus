@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philosophers.h                                     :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/26 12:22:14 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/28 17:43:49 by blvilarn         ###   ########.fr       */
+/*   Created: 2023/09/28 17:24:01 by blvilarn          #+#    #+#             */
+/*   Updated: 2023/09/28 17:24:22 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <pthread.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/time.h>
+#include "../philosophers.h"
 
-typedef struct s_params
+int	ft_usleep(size_t milliseconds)
 {
-	int	n;
-	int	ttd;
-	int	tte;
-	int	tts;
-	int	eat_limit;
-}	t_params;
+	size_t	start;
 
-//(not) libft
-int		ft_iswhitespace(int c);
-int		ft_isnum(char *str);
-int		ft_atoi(const char *str);
-int		ft_isdigit(int c);
+	start = get_current_time();
+	while ((get_current_time() - start) < milliseconds)
+		usleep(500);
+	return (0);
+}
 
-//utils
-int		ft_usleep(size_t milliseconds);
-size_t	get_current_time(void);
+size_t	get_current_time(void)
+{
+	struct timeval	time;
+
+	if (gettimeofday(&time, NULL) == -1)
+		write(2, "gettimeofday() error\n", 22);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
+}
