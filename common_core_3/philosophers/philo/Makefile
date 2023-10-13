@@ -6,13 +6,13 @@
 #    By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 16:15:09 by blvilarn          #+#    #+#              #
-#    Updated: 2023/09/27 20:16:24 by blvilarn         ###   ########.fr        #
+#    Updated: 2023/09/28 19:09:19 by blvilarn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philosophers
 CFLAGS = -Wall -Wextra -Werror -MMD
-FILES = philosophers.c not_libft.c
+FILES = philosophers.c not_libft.c utils.c
 
 SRC_DIR = src/
 SRC = $(addprefix $(SRC_DIR), $(FILES))

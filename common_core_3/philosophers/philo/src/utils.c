@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 17:24:01 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/28 17:24:22 by blvilarn         ###   ########.fr       */
+/*   Updated: 2023/09/29 16:10:42 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	ft_usleep(size_t milliseconds)
 {
-	size_t	start;
+	size_t	end;
 
-	start = get_current_time();
-	while ((get_current_time() - start) < milliseconds)
+	end = get_current_time() + milliseconds;
+	while (end > milliseconds)
 		usleep(500);
 	return (0);
 }
