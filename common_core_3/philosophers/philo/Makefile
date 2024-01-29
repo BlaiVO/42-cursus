@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/04 16:15:09 by blvilarn          #+#    #+#              #
-#    Updated: 2023/09/28 19:09:19 by blvilarn         ###   ########.fr        #
+#    Created: 2024/01/12 12:00:09 by blvilarn          #+#    #+#              #
+#    Updated: 2024/01/12 12:00:13 by blvilarn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philosophers
+NAME = philo
 CFLAGS = -Wall -Wextra -Werror -MMD
-FILES = philosophers.c not_libft.c utils.c
+FILES = main.c utils.c monitor.c routine_actions.c threads.c utils_get_params.c
 
 SRC_DIR = src/
 SRC = $(addprefix $(SRC_DIR), $(FILES))
@@ -35,20 +35,20 @@ all:
 
 $(NAME):: $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $@
-	@echo "$(GREEN)philosophers compiled$(NC)"
+	@echo "$(GREEN) philosophers compiled$(NC)"
 
 $(NAME)::
 	@echo -n
 
 clean:
 	@$(RM) $(OBJ_DIR) --no-print-directory
-	@echo "$(RED)destruction successful$(NC)"
+	@echo "$(RED)\ndestruction successful\n$(NC)"
 
 fclean: clean
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) 
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
 
 -include $(DEPS)

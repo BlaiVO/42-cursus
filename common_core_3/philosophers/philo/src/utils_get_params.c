@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   not_libft.c                                        :+:      :+:    :+:   */
+/*   utils_get_params.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 17:42:34 by blvilarn          #+#    #+#             */
-/*   Updated: 2023/09/28 17:44:00 by blvilarn         ###   ########.fr       */
+/*   Created: 2024/01/12 11:52:06 by blvilarn          #+#    #+#             */
+/*   Updated: 2024/01/29 15:08:58 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	ft_isnum(char *str)
 	i = 0;
 	if (!str[i])
 		return (0);
+	if (!ft_isdigit(str[i]) && str[i] != '+')
+		return (0);
 	while (ft_iswhitespace(str[i]))
 		i++;
 	if (str[i] == '+')
@@ -47,6 +49,8 @@ int	ft_isnum(char *str)
 			return (0);
 		i++;
 	}
+	if (ft_atoi(str) == 0)
+		return (0);
 	return (1);
 }
 
