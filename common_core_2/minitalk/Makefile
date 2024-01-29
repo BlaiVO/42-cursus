@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: blai <blai@student.42.fr>                  +#+  +:+       +#+         #
+#    By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/04 17:25:14 by blvilarn          #+#    #+#              #
-#    Updated: 2023/08/23 18:01:26 by blai             ###   ########.fr        #
+#    Updated: 2024/01/22 16:06:14 by blvilarn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,19 +55,21 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c Makefile
 	@mkdir -p $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -I./ -c $< -o $@
 
-all:
-	@$(MAKE) -C libft --no-print-directory
+all: libs
 	@$(MAKE) $(SERVER_NAME) --no-print-directory
 	@$(MAKE) $(CLIENT_NAME) --no-print-directory
 
-$(SERVER_NAME): $(SERVER_OBJS)
+$(SERVER_NAME): $(SERVER_OBJS) libs
 	@$(CC) $(CFLAGS) $(SERVER_OBJS) $(LIBS) -o $@
 	@echo "$(GREEN)server compiled$(NC)"
 
-$(CLIENT_NAME): $(CLIENT_OBJS)
+$(CLIENT_NAME): $(CLIENT_OBJS) libs
 	@$(CC) $(CFLAGS) $(CLIENT_OBJS) $(LIBS) -o $@
 	@echo "$(GREEN)client compiled$(NC)"
-	 
+	
+libs:
+	@$(MAKE) -C libft --no-print-directory > /dev/zero
+
 clean:
 	@$(RM) $(OBJ_DIR) --no-print-directory
 	@$(MAKE) clean -C libft --no-print-directory
@@ -91,6 +93,6 @@ $(CLIENT_BONUS_NAME): $(CLIENT_BONUS_OBJS)
 	@$(CC) $(CFLAGS) $(CLIENT_BONUS_OBJS) $(LIBS) -o $@
 	@echo "$(GREEN)client bonus compiled$(NC)"
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus server client libs
 
 -include $(DEPS)
