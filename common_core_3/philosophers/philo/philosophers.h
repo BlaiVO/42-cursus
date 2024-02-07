@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:00:18 by blvilarn          #+#    #+#             */
-/*   Updated: 2024/01/12 12:00:27 by blvilarn         ###   ########.fr       */
+/*   Updated: 2024/01/29 16:16:10 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_philo
 	pthread_mutex_t	*meal_lock;
 }					t_philo;
 
-typedef struct s_gral
+typedef struct s_data
 {
 	int				num_of_philos;
 	size_t			time_to_die;
@@ -52,20 +52,20 @@ typedef struct s_gral
 	pthread_mutex_t	dead_lock;
 	pthread_mutex_t	meal_lock;
 	pthread_mutex_t	write_lock;
-}					t_gral;
+}					t_data;
 
 //main.c
-int		save_arguments(int argc, char **argv, t_gral *gral);
-int		get_params(int argc, char **argv, t_gral *gral);
-void	clean_gral(char *str, t_gral *gral);
-void	init_philos(t_gral *gral, size_t i);
+int		save_arguments(int argc, char **argv, t_data *data);
+int		get_params(int argc, char **argv, t_data *data);
+void	clean_data(char *str, t_data *data);
+void	init_philos(t_data *data, size_t i);
 
 //utils.c
 int		ft_usleep(size_t milliseconds);
 size_t	get_current_time(void);
 int		ft_strlen(char *str);
 
-//utils_get_params.c
+//totally_not_libft.c
 int		ft_iswhitespace(int c);
 int		ft_isdigit(int c);
 int		ft_isnum(char *str);
@@ -74,7 +74,7 @@ int		ft_atoi(const char *str);
 //threads.c
 int		dead_loop(t_philo *philo);
 void	*philo_routine(void *pointer);
-int		thread_create(t_gral *gral);
+int		thread_create(t_data *data);
 
 //routine_actions.c
 void	print_message(char *str, t_philo *philo, int id);

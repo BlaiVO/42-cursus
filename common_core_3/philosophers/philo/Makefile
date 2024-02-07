@@ -6,13 +6,13 @@
 #    By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/12 12:00:09 by blvilarn          #+#    #+#              #
-#    Updated: 2024/01/12 12:00:13 by blvilarn         ###   ########.fr        #
+#    Updated: 2024/01/29 15:26:59 by blvilarn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CFLAGS = -Wall -Wextra -Werror -MMD
-FILES = main.c utils.c monitor.c routine_actions.c threads.c utils_get_params.c
+FILES = main.c utils.c monitor.c routine_actions.c threads.c totally_not_libft.c
 
 SRC_DIR = src/
 SRC = $(addprefix $(SRC_DIR), $(FILES))

@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:52:02 by blvilarn          #+#    #+#             */
-/*   Updated: 2024/01/29 15:08:51 by blvilarn         ###   ########.fr       */
+/*   Updated: 2024/01/29 15:21:25 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,28 @@ void	*philo_routine(void *pointer)
 	return (pointer);
 }
 
-int	thread_create(t_gral *gral)
+int	thread_create(t_data *data)
 {
 	pthread_t	observer;
 	int			i;
 
-	if (pthread_create(&observer, NULL, &monitor, gral->philos) != 0)
-		clean_gral("Thread creation error", gral);
+	if (pthread_create(&observer, NULL, &monitor, data->philos) != 0)
+		clean_data("Thread creation error", data);
 	i = 0;
-	while (i < gral->num_of_philos)
+	while (i < data->num_of_philos)
 	{
-		if (pthread_create(&gral->philos[i].thread, NULL, &philo_routine,
-				&gral->philos[i]) != 0)
-			clean_gral("Thread creation error", gral);
+		if (pthread_create(&data->philos[i].thread, NULL, &philo_routine,
+				&data->philos[i]) != 0)
+			clean_data("Thread creation error", data);
 		i++;
 	}
 	i = 0;
 	if (pthread_join(observer, NULL) != 0)
-		clean_gral("Thread join error", gral);
-	while (i < gral->num_of_philos)
+		clean_data("Thread join error", data);
+	while (i < data->num_of_philos)
 	{
-		if (pthread_join(gral->philos[i].thread, NULL) != 0)
-			clean_gral("Thread join error", gral);
+		if (pthread_join(data->philos[i].thread, NULL) != 0)
+			clean_data("Thread join error", data);
 		i++;
 	}
 	return (0);
