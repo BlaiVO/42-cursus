@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_get_params.c                                 :+:      :+:    :+:   */
+/*   totally_not_libft.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:52:06 by blvilarn          #+#    #+#             */
-/*   Updated: 2024/01/29 15:08:58 by blvilarn         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:27:57 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	if (str == NULL)
+		return (0);
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
 
 int	ft_iswhitespace(int c)
 {
