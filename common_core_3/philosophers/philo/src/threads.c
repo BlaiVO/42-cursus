@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:52:02 by blvilarn          #+#    #+#             */
-/*   Updated: 2024/01/29 15:21:25 by blvilarn         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:19:46 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ int	dead_loop(t_philo *philo)
 {
 	pthread_mutex_lock(philo->dead_lock);
 	if (*philo->dead == 1)
-		return (pthread_mutex_unlock(philo->dead_lock), 1);
+	{
+		pthread_mutex_unlock(philo->dead_lock);
+		return (1);
+	}
 	pthread_mutex_unlock(philo->dead_lock);
 	return (0);
 }

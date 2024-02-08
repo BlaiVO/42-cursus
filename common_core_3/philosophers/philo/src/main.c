@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:51:39 by blvilarn          #+#    #+#             */
-/*   Updated: 2024/01/29 16:16:35 by blvilarn         ###   ########.fr       */
+/*   Updated: 2024/02/08 18:37:52 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,23 @@ int	main(int argc, char **argv)
 
 int	save_arguments(int argc, char **argv, t_data *data)
 {
-	t_philo			*philos;
-	pthread_mutex_t	*forks;
-	int				i;
+	int	i;
 
 	if (!get_params(argc, argv, data))
 		return (0);
-	philos = malloc(data->num_of_philos * sizeof(t_philo));
-	forks = malloc(data->num_of_philos * sizeof(pthread_mutex_t));
-	data->philos = philos;
-	data->forks = forks;
+	data->philos = malloc(data->num_of_philos * sizeof(t_philo));
+	if (data->philos != NULL)
+	{
+		printf("Malloc Error\n");
+		exit(1);
+	}
+	data->forks = malloc(data->num_of_philos * sizeof(pthread_mutex_t));
+	if (data->forks != NULL)
+	{
+		free(data->philos);
+		printf("Malloc error\n");
+		exit(1);
+	}
 	i = 0;
 	while (i < data->num_of_philos)
 	{
@@ -101,6 +108,7 @@ void	clean_data(char *str, t_data *data)
 	}
 	free(data->forks);
 	free(data->philos);
+	exit (1);
 }
 
 void	init_philos(t_data *data, size_t i)
