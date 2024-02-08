@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:51:39 by blvilarn          #+#    #+#             */
-/*   Updated: 2024/02/08 18:37:52 by blvilarn         ###   ########.fr       */
+/*   Updated: 2024/02/08 19:09:20 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ int	save_arguments(int argc, char **argv, t_data *data)
 	if (!get_params(argc, argv, data))
 		return (0);
 	data->philos = malloc(data->num_of_philos * sizeof(t_philo));
-	if (data->philos != NULL)
+	if (data->philos == NULL)
 	{
 		printf("Malloc Error\n");
 		exit(1);
 	}
 	data->forks = malloc(data->num_of_philos * sizeof(pthread_mutex_t));
-	if (data->forks != NULL)
+	if (data->forks == NULL)
 	{
 		free(data->philos);
 		printf("Malloc error\n");
