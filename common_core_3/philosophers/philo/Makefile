@@ -6,12 +6,12 @@
 #    By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/12 12:00:09 by blvilarn          #+#    #+#              #
-#    Updated: 2024/02/07 17:28:27 by blvilarn         ###   ########.fr        #
+#    Updated: 2024/02/15 17:53:34 by blvilarn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
-CFLAGS = -Wall -Wextra -Werror -MMD
+CFLAGS = -Wall -Wextra -Werror -MMD #-fsanitize=thread
 FILES = main.c ft_usleep.c monitor.c routine_actions.c threads.c totally_not_libft.c
 
 SRC_DIR = src/

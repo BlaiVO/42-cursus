@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:52:02 by blvilarn          #+#    #+#             */
-/*   Updated: 2024/02/08 18:19:46 by blvilarn         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:49:23 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ void	*philo_routine(void *pointer)
 	t_philo	*philo;
 
 	philo = (t_philo *)pointer;
-	if (philo->id % 2 == 0)
-		ft_usleep(1);
+	if (philo->id % 2 != 0)
+		ft_usleep(2);
 	while (!dead_loop(philo))
 	{
+		philo_thinks(philo);
 		philo_eats(philo);
 		philo_dreams(philo);
-		philo_thinks(philo);
 	}
 	return (pointer);
 }

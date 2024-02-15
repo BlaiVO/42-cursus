@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:51:57 by blvilarn          #+#    #+#             */
-/*   Updated: 2024/01/29 15:08:44 by blvilarn         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:55:43 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	print_message(char *str, t_philo *philo, int id)
 	pthread_mutex_lock(philo->write_lock);
 	time = get_current_time() - philo->start_time;
 	if (!dead_loop(philo))
-		printf("%zu %d %s\n", time, id, str);
+		printf("%zu %d %s\n", time, id + 1, str);
 	pthread_mutex_unlock(philo->write_lock);
 }
 
