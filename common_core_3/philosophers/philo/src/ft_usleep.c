@@ -6,19 +6,28 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:52:10 by blvilarn          #+#    #+#             */
-/*   Updated: 2024/02/16 16:27:47 by blvilarn         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:13:06 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philosophers.h"
 
-int	ft_usleep(size_t milliseconds)
+int	ft_usleep(size_t milliseconds, t_philo *philo)
 {
 	size_t	end;
 
 	end = get_current_time() + milliseconds;
-	while (end > get_current_time() && p)
+	while (end > get_current_time())
+	{
+		pthread_mutex_lock(philo->dead_lock);
+		if (*philo->dead == 1)
+		{
+			pthread_mutex_unlock(philo->dead_lock);
+			return (0);
+		}
+		pthread_mutex_unlock(philo->dead_lock);
 		usleep(200);
+	}
 	return (0);
 }
 

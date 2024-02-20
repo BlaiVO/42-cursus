@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:51:57 by blvilarn          #+#    #+#             */
-/*   Updated: 2024/02/15 17:55:43 by blvilarn         ###   ########.fr       */
+/*   Updated: 2024/02/16 16:56:47 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	philo_thinks(t_philo *philo)
 void	philo_dreams(t_philo *philo)
 {
 	print_message("is sleeping", philo, philo->id);
-	ft_usleep(philo->time_to_sleep);
+	ft_usleep(philo->time_to_sleep, philo);
 }
 
 void	philo_eats(t_philo *philo)
@@ -40,7 +40,7 @@ void	philo_eats(t_philo *philo)
 	print_message("has taken a fork", philo, philo->id);
 	if (philo->num_of_philos == 1)
 	{
-		ft_usleep(philo->time_to_die);
+		ft_usleep(philo->time_to_die, philo);
 		pthread_mutex_unlock(philo->r_fork);
 		return ;
 	}
@@ -52,7 +52,7 @@ void	philo_eats(t_philo *philo)
 	philo->last_meal = get_current_time();
 	philo->meals_eaten++;
 	pthread_mutex_unlock(philo->meal_lock);
-	ft_usleep(philo->time_to_eat);
+	ft_usleep(philo->time_to_eat, philo);
 	philo->eating = 0;
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(philo->r_fork);

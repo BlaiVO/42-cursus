@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:52:02 by blvilarn          #+#    #+#             */
-/*   Updated: 2024/02/15 17:49:23 by blvilarn         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:12:33 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	*philo_routine(void *pointer)
 
 	philo = (t_philo *)pointer;
 	if (philo->id % 2 != 0)
-		ft_usleep(2);
+		ft_usleep(2, philo);
 	while (!dead_loop(philo))
 	{
 		philo_thinks(philo);
@@ -46,22 +46,22 @@ int	thread_create(t_data *data)
 	int			i;
 
 	if (pthread_create(&observer, NULL, &monitor, data->philos) != 0)
-		clean_data("Thread creation error", data);
+		return (clean_data("Thread creation error", data), 1);
 	i = 0;
 	while (i < data->num_of_philos)
 	{
 		if (pthread_create(&data->philos[i].thread, NULL, &philo_routine,
 				&data->philos[i]) != 0)
-			clean_data("Thread creation error", data);
+			return (clean_data("Thread creation error", data));
 		i++;
 	}
 	i = 0;
 	if (pthread_join(observer, NULL) != 0)
-		clean_data("Thread join error", data);
+		return (clean_data("Thread join error", data));
 	while (i < data->num_of_philos)
 	{
 		if (pthread_join(data->philos[i].thread, NULL) != 0)
-			clean_data("Thread join error", data);
+			return (clean_data("Thread join error", data));
 		i++;
 	}
 	return (0);

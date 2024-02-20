@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 11:51:39 by blvilarn          #+#    #+#             */
-/*   Updated: 2024/02/08 19:09:20 by blvilarn         ###   ########.fr       */
+/*   Updated: 2024/02/20 17:08:57 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int	main(int argc, char **argv)
 	{
 		if (!save_arguments(argc, argv, &data))
 		{
-			printf("Invalid argument\n");
+			printf("Error\n");
 			return (0);
 		}
 		pthread_mutex_init(&data.write_lock, NULL);
 		pthread_mutex_init(&data.dead_lock, NULL);
 		pthread_mutex_init(&data.meal_lock, NULL);
-		thread_create(&data);
-		clean_data(NULL, &data);
+		if (thread_create(&data) == 0)
+			clean_data(NULL, &data);
 	}
 	else
 	{
@@ -45,16 +45,12 @@ int	save_arguments(int argc, char **argv, t_data *data)
 		return (0);
 	data->philos = malloc(data->num_of_philos * sizeof(t_philo));
 	if (data->philos == NULL)
-	{
-		printf("Malloc Error\n");
-		exit(1);
-	}
+		return (0);
 	data->forks = malloc(data->num_of_philos * sizeof(pthread_mutex_t));
 	if (data->forks == NULL)
 	{
 		free(data->philos);
-		printf("Malloc error\n");
-		exit(1);
+		return (0);
 	}
 	i = 0;
 	while (i < data->num_of_philos)
@@ -88,7 +84,7 @@ int	get_params(int argc, char **argv, t_data *data)
 	return (1);
 }
 
-void	clean_data(char *str, t_data *data)
+int	clean_data(char *str, t_data *data)
 {
 	int	i;
 
@@ -108,7 +104,7 @@ void	clean_data(char *str, t_data *data)
 	}
 	free(data->forks);
 	free(data->philos);
-	exit (1);
+	return (1);
 }
 
 void	init_philos(t_data *data, size_t i)
