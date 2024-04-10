@@ -6,12 +6,12 @@ Contact::Contact(void){
 	return;
 }
 
-Contact::Contact(std::string f_name, std::string l_name, std::string n_name, std::string phone, std::string secret) {
-	_f_name = f_name;
-	_l_name = l_name;
-	_n_name = n_name;
-	_phone = phone;
-	_secret = secret;
+Contact::Contact(std::string new_f_name, std::string new_l_name, std::string new_n_name, std::string new_phone, std::string new_secret) {
+	f_name = new_f_name;
+	l_name = new_l_name;
+	n_name = new_n_name;
+	phone = new_phone;
+	secret = new_secret;
 	return;
 }
 
@@ -20,11 +20,3 @@ Contact::~Contact(void){
 	return;
 }
 
-void Contact::set_value(std::string f_name, std::string l_name, std::string n_name, std::string phone, std::string secret){
-	_f_name = f_name;
-	_l_name = l_name;
-	_n_name = n_name;
-	_phone = phone;
-	_secret = secret;
-	return;
-}

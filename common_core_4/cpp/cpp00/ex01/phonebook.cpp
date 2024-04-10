@@ -3,19 +3,46 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-PhoneBook::PhoneBook(void){
+PhoneBook::PhoneBook(void) {
 	std::cout << "Constructor called" << std::endl;
 	total_contacts = 0;
 
 	return;
 }
 
-PhoneBook::~PhoneBook(void){
+PhoneBook::~PhoneBook(void) {
 	std::cout << "Destructor called" << std::endl;
 	return;
 }
 
+void	PhoneBook::printValue(std::string value) {
+	std::cout << "|";
+	for (size_t i = 0; i <=10; i++) {
+		if (i + 1 <=  value.length())
+		{
+			if (i + 1 == 10 && value.length() > 10)
+				putchar('.');
+			else
+				putchar(value[i]);
+		}
+		else
+			putchar(' ');
+	}
+}
+
+void	PhoneBook::printContact(Contact contact)
+{
+	printValue(contact.f_name);
+	printValue(contact.l_name);
+	printValue(contact.n_name);
+	printValue(contact.phone);
+	printValue(contact.secret);
+	std::cout << "|" << std::endl;
+
+}
+
 void	PhoneBook::add(void) {
+	//TODO Reject empty values
 	std::string	f_name;
 	std::string l_name;
 	std::string n_name;
@@ -32,12 +59,14 @@ void	PhoneBook::add(void) {
 	std::getline(std::cin, phone);
 	std::cout << "Input your contact's darkest secret >:)" << std::endl;
 	std::getline(std::cin, secret);
-	Contact new_contact(f_name, l_name, n_name, phone, secret);
-	contacts[total_contacts % 8] = new_contact;
+	Contact new_contact();
+	contacts[total_contacts % 8];
 }
 
 void	PhoneBook::search(void)
 {
-	std::cout << "| Name | Last Name | Nickname | Phone Number | Darkest Secret|" << std::endl;
-	
+	std::cout << "|   Name   |Last Name | Nickname |Phone Nbr |DarkSecret|" << std::endl;
+	for (size_t i = 0; i < sizeof(contacts); i++)
+		if (contacts[i].f_name == "")
+			printContact(contacts[i]);
 }
