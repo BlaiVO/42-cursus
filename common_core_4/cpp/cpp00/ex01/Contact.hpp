@@ -10,7 +10,7 @@ class Contact {
 		std::string n_name;
 		std::string	phone;
 		std::string	secret;
-		int			is_set;
+		int			index;
 		Contact();
 		~Contact(void);
 };

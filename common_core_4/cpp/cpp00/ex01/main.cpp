@@ -7,6 +7,7 @@ int main(void)
 {
 	PhoneBook phonebook;
 	std::string input;
+
 	std::cout << "Welcome 	\n";
 	std::cout << "Plase input one of the following commands: ADD, SEARCH, EXIT" << std::endl;
 	while (std::getline(std::cin, input))
