@@ -5,13 +5,13 @@
 #include "Contact.hpp"
 
 PhoneBook::PhoneBook(void) {
-	std::cout << "phonebook constructor called" << std::endl;
+	//std::cout << "phonebook constructor called" << std::endl;
 	total_contacts = 0;
 	return;
 }
 
 PhoneBook::~PhoneBook(void) {
-	std::cout << "phonebook destructor called" << std::endl;
+	//std::cout << "phonebook destructor called" << std::endl;
 	return;
 }
 
@@ -77,7 +77,7 @@ void	PhoneBook::search(void)
 	int	input;
 	std::cout << "|Index     |Name      |Last Name |Nickname  |" << std::endl;
 	if (contacts[0].index)
-		std::cout << "|----------|----------|----------|----------|" << std::endl;
+		std::cout << "|----------+----------+----------+----------|" << std::endl;
 	for (size_t i = 0; i < 8; i++)
 	{
 		if (contacts[i].index)
@@ -85,13 +85,15 @@ void	PhoneBook::search(void)
 	}
 	std::cout << "---------------------------------------------" << std::endl;
 	std::cin >> input;
-	if (std::cin.fail() || (input < 1 || input > 8) || !contacts[input].index) {
+	if (std::cin.fail() || (input < 1 || input > 8) || !contacts[input - 1].index) {
 		std::cout << "Invalid index" << std::endl;
 	} else {
-		std::cout << "First Name: " << contacts[input - 1].f_name << std::endl;
-		std::cout << "Second Name: " << contacts[input - 1].l_name << std::endl;
-		std::cout << "Nickname: " << contacts[input - 1].n_name << std::endl;
-		std::cout << "Phone Number: " << contacts[input - 1].phone << std::endl;
-		std::cout << "Darkest Secret >:): " << contacts[input - 1].f_name << std::endl;
+		std::cout << "- First Name: " << contacts[input - 1].f_name << std::endl;
+		std::cout << "- Second Name: " << contacts[input - 1].l_name << std::endl;
+		std::cout << "- Nickname: " << contacts[input - 1].n_name << std::endl;
+		std::cout << "- Phone Number: " << contacts[input - 1].phone << std::endl;
+		std::cout << "- Darkest Secret >:): " << contacts[input - 1].secret << std::endl;
 	};
+	while(getchar()!='\n')
+		std::cin.clear();
 } 

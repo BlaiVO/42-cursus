@@ -2,7 +2,7 @@
 #include "Contact.hpp"
 
 Contact::Contact(void){
-	std::cout << "contact constructor called" << std::endl;
+	//std::cout << "contact constructor called" << std::endl;
 	f_name = "";
 	l_name = "";
 	n_name = "";
@@ -13,7 +13,7 @@ Contact::Contact(void){
 }
 
 Contact::~Contact(void){
-	std::cout << "contact destructor called" << std::endl;
+	//std::cout << "contact destructor called" << std::endl;
 	return;
 }
 
