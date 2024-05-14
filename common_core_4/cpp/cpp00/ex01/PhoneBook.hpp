@@ -5,6 +5,7 @@
 class PhoneBook {
 	private:
 		int total_contacts;
+		int		get_int(void);
 		void	printValue(std::string value);
 		void	printContact(Contact *contact);
 		Contact contacts[8];
