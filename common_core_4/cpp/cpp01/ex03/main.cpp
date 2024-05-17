@@ -19,6 +19,13 @@ int	main(void) {
 		club.setType("some other type of club");
 		jim.attack();
 	}
+	{
+		Weapon rock = Weapon("rock");
+		HumanB charlie("Charlie");
+		charlie.attack();
+		charlie.setWeapon(rock);
+		charlie.attack();
+	}
 
 	return (0);
 }
