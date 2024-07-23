@@ -1,5 +1,5 @@
 NAME = harl
-FILES = main.cpp harl.cpp
+FILES = main.cpp Harl.cpp
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
