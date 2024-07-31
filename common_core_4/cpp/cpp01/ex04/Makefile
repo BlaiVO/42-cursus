@@ -14,8 +14,6 @@ clean:
 fclean:
 	$(RM) $(NAME) tests/*.replace
 
-
-
 re: clean all
 
 .PHONY: all clean fclean re

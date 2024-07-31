@@ -3,6 +3,7 @@
 #include "Zombie.hpp"
 
 Zombie::Zombie(void) {
+	name = "unnamed zombie";
 	return;
 }
 
@@ -13,7 +14,7 @@ Zombie::Zombie(std::string new_name) {
 
 Zombie::~Zombie(void) {
 	std::cout << name << " has been destroyed." << std::endl;
-	return; 
+	return;
 }
 void	Zombie::announce(void) {
 	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;

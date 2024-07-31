@@ -7,9 +7,13 @@ all: $(NAME)
 
 $(NAME): $(FILES)
 	$(CC) $(CFLAGS) -o $(NAME) $(FILES)
+
 clean:
 	$(RM) $(NAME)
 
-re: clean all
+fclean:
+	$(RM) $(NAME)
 
-.PHONY: all clean re
+re: clean fclean all
+
+.PHONY: all clean fclean re
