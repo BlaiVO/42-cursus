@@ -2,9 +2,21 @@
 #include "Fixed.hpp"
 
 
-Fixed::Fixed() {
+Fixed::Fixed(){
 	std::cout << "Default constructor called" << std::endl;
 	this->value = 0;
+	return;
+}
+
+Fixed::Fixed(const int val){
+	std::cout << "Default constructor called" << std::endl;
+	this->value = val;
+	return;
+}
+
+Fixed::Fixed(const float val){
+	std::cout << "Default constructor called" << std::endl;
+	this->value = (int)val;
 	return;
 }
 
