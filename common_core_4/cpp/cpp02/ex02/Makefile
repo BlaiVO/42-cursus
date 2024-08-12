@@ -1,15 +1,34 @@
 NAME = fixed
-FILES = main.cpp Fixed.cpp
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+C_FLAGS = -Wall -Wextra -Werror -MMD -std=c++98 -pedantic
+RM = rm -f
 
-all: $(NAME)
+SRC = main.cpp Fixed.cpp
 
-$(NAME): $(FILES)
-	$(CC) $(CFLAGS) -o $(NAME) $(FILES)
+F_OBJ = obj/
+OBJ = $(addprefix $(F_OBJ), $(SRC:.cpp=.o))
+DEP = $(addprefix $(F_OBJ), $(SRC:.cpp=.d))
+
+all: dir $(NAME)
+
+-include ${DEP}
+
+dir:
+	@mkdir -p $(F_OBJ)
+
+$(F_OBJ)%.o: %.cpp Makefile
+	$(CC) $(C_FLAGS) -I ./inc -c $< -o $@
+
+$(NAME):: $(OBJ)
+	$(CC) $(C_FLAGS) $(^) -o $(NAME)
+
 clean:
+	$(RM) $(OBJ) $(DEP)
+	$(RM) -R obj
+
+fclean: clean
 	$(RM) $(NAME)
 
-re: clean all
+re: fclean all
 
-.PHONY: all clean re
+.PHONY: all clean fclean re
