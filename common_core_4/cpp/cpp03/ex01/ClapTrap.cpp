@@ -75,23 +75,3 @@ void	ClapTrap::beRepaired(unsigned int ammount) {
 	this->energy_points -= ammount;
 	std::cout << this->name << " was repaired. Now it has " << this->hit_points << " hp" << std::endl;
 }
-
-std::string	ClapTrap::getName(void) {
-	return this->name;
-}
-
-unsigned int	ClapTrap::getHitPoints(void) {
-	return this->hit_points;
-}
-
-unsigned int	ClapTrap::getEnergyPoints(void) {
-	return this->energy_points;
-}
-
-unsigned int	ClapTrap::getAttackDamage(void) {
-	return this->attack_damage;
-}
-
-void	ClapTrap::setEnergyPoints(unsigned int num){
-	this->energy_points = num;
-}
