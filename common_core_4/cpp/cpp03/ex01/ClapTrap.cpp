@@ -30,7 +30,7 @@ ClapTrap &ClapTrap::operator= (const ClapTrap &a) {
 
 ClapTrap::~ClapTrap(void) {
 	std::cout << "ClapTrap " << this->name << " Destructor called" << std::endl;
-	return ;
+	return;
 }
 
 void	ClapTrap::attack(const std::string &target){
@@ -82,4 +82,16 @@ std::string	ClapTrap::getName(void) {
 
 unsigned int	ClapTrap::getHitPoints(void) {
 	return this->hit_points;
+}
+
+unsigned int	ClapTrap::getEnergyPoints(void) {
+	return this->energy_points;
+}
+
+unsigned int	ClapTrap::getAttackDamage(void) {
+	return this->attack_damage;
+}
+
+void	ClapTrap::setEnergyPoints(unsigned int num){
+	this->energy_points = num;
 }

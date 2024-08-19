@@ -19,6 +19,9 @@ class ClapTrap {
 		void	beRepaired(unsigned int ammount);
 		std::string		getName(void);
 		unsigned int	getHitPoints(void);
+		unsigned int	getEnergyPoints(void);
+		unsigned int	getAttackDamage(void);
+		void			setEnergyPoints(unsigned int num);
 };
 
 #endif

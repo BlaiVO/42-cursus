@@ -22,6 +22,19 @@ ScavTrap::~ScavTrap(void) {
 	return ;
 }
 
+void	ScavTrap::attack(const std::string &target){
+	if (this->getHitPoints() <= 0) {
+		std::cout << "ScavTrap " << this->getName() << " is dead and can't attack " << target << std::endl;
+		return;
+	}
+	if (this->getEnergyPoints() <= 0) {
+		std::cout << "ScavTrap " << this->getName() << " has no energy and can't attack " << target << std::endl;
+		return;
+	}
+	this->setEnergyPoints(this->getEnergyPoints());
+	std::cout << "ScavTrap " << this->getName() << " attacks " << target << " causing " << this->getAttackDamage() << " points of damage!" << std::endl;
+}
+
 void	ScavTrap::guardGate(){
 	if (this->getHitPoints() == 0) {
 		std:: cout << this->getName() << " is dead and cannot guard a gate" << std::endl;
@@ -29,4 +42,3 @@ void	ScavTrap::guardGate(){
 	}
 	std::cout << this->getName() << " is now in Gate Keeper mode" << std::endl;
 }
-
