@@ -1,4 +1,4 @@
-NAME = brain
+NAME = abstract
 CC = c++
 C_FLAGS = -Wall -Wextra -Werror -MMD -std=c++98 -pedantic
 RM = rm -f

@@ -61,10 +61,11 @@ int main(void) {
 		std::cout << "--------------Wrong Animal Tests--------------" << std::endl;
 		const WrongAnimal* meta = new WrongAnimal();
 		const WrongAnimal* i = new WrongCat();
+		WrongCat wrong_cat;
 		std::cout << i->getType() << " " << std::endl;
 		i->makeSound();
 		meta->makeSound();
-		//* Subject does not delete the animals, I will do it to prevent leaks
+		wrong_cat.makeSound();
 		delete(meta);
 		delete(i);
 	}
