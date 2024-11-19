@@ -6,7 +6,7 @@
 /*   By: blvilarn <blvilarn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:46:48 by blvilarn          #+#    #+#             */
-/*   Updated: 2022/10/25 19:37:21 by blvilarn         ###   ########.fr       */
+/*   Updated: 2024/08/21 15:49:29 by blvilarn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	count_words(char const *s, char c)
 	i = 0;
 	counter = 0;
 	last_del = 1;
-	while (s[i] != '\0')
+	while (s && s[i] != '\0')
 	{
 		if (s[i] == c)
 			last_del = 1;
@@ -72,14 +72,15 @@ static char	**free_the_words(int cword, char **strings)
 
 char	**ft_split(char const *s, char c)
 {
-	char	**strings;
-	int		words;
-	int		cword;
-	int		i;
+	char			**strings;
+	int				cword;
+	int				i;
+	const int		words = count_words(s, c);
 
-	words = count_words(s, c);
+	if (!s)
+		return (NULL);
 	cword = 0;
-	strings = malloc(sizeof(char *) * (words + 1));
+	strings = ft_calloc(words + 1, sizeof(char *));
 	if (!strings)
 		return (NULL);
 	i = 0;
@@ -95,6 +96,5 @@ char	**ft_split(char const *s, char c)
 		else
 			i++;
 	}
-	strings[cword] = 0;
 	return (strings);
 }
