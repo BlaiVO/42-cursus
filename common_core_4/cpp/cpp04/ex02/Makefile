@@ -17,7 +17,7 @@ dir:
 	@mkdir -p $(F_OBJ)
 
 $(F_OBJ)%.o: %.cpp Makefile
-	$(CC) $(C_FLAGS) -I ./inc -c $< -o $@
+	$(CC) $(C_FLAGS) -I ./ -c $< -o $@
 
 $(NAME):: $(OBJ)
 	$(CC) $(C_FLAGS) $(^) -o $(NAME)
