@@ -48,6 +48,10 @@ void Bureaucrat::decrementGrade() {
 	(this->_grade)++;
 }
 
+void	Bureaucrat::signForm(Form form)
+{
+}
+
 const char *Bureaucrat::GradeTooLowException::what(void) const throw()
 {
 	return ("Grade too low");

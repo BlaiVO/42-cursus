@@ -9,7 +9,7 @@ int main(void)
 	std::cout << bur2 << std::endl;
 	try
 	{
-		bur.decrementGrade();
+		bur.decrement_grade();
 	}
 	catch (Bureaucrat::GradeTooLowException &e)
 	{
