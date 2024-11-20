@@ -11,7 +11,7 @@ Form::Form(const std::string name, const int signing_grade, const int execution_
 		throw GradeTooLowException();
 }
 
-Form::Form(const Form &copy) {
+Form::Form(const Form &copy) : _signing_grade(copy.getSigningGrade()), _execution_grade(copy.getExecutionGrade()){
 	*this = copy;
 }
 
@@ -41,7 +41,9 @@ const int	Form::getExecutionGrade() const {
 }
 
 void	Form::beSigned(Bureaucrat bureaucrat) {
-
+	if (bureaucrat.getGrade() > this->_signing_grade)
+		throw Form::GradeTooLowException();
+	this->_is_signed = true;
 }
 
 
