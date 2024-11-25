@@ -1,9 +1,9 @@
-NAME = form
+NAME = forms
 CC = c++
 C_FLAGS = -Wall -Wextra -Werror -MMD -std=c++98
 RM = rm -f
 
-SRC = main.cpp Form.cpp Bureaucrat.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
 
 F_OBJ = obj/
 OBJ = $(addprefix $(F_OBJ), $(SRC:.cpp=.o))
@@ -25,6 +25,7 @@ $(NAME):: $(OBJ)
 clean:
 	$(RM) $(OBJ) $(DEP)
 	$(RM) -R obj
+	$(RM) -f *_shrubbery
 
 fclean: clean
 	$(RM) $(NAME)
