@@ -32,33 +32,32 @@ bool	Form::getIsSigned() const {
 	return (this->_is_signed);
 }
 
-const int	Form::getSigningGrade() const {
+int	Form::getSigningGrade() const {
 	return (this->_signing_grade);
 }
 
-const int	Form::getExecutionGrade() const {
+int	Form::getExecutionGrade() const {
 	return (this->_execution_grade);
 }
 
-void	Form::beSigned(Bureaucrat bureaucrat) {
+void	Form::beSigned(Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() > this->_signing_grade)
 		throw Form::GradeTooLowException();
 	this->_is_signed = true;
 }
 
-
 const char *Form::GradeTooLowException::what(void) const throw()
 {
-	return ("Grade too low");
+	return ("grade too low");
 };
 
 const char *Form::GradeTooHighException::what(void) const throw()
 {
-	return ("Grade too high");
+	return ("grade too high");
 };
 
 std::ostream	&operator<<(std::ostream &o, Form const &form) {
 	o << "Form " << form.getName() << ", is signed: " << form.getIsSigned() \
-		<< ", signing grade: " << form.getSigningGrade() << ", execution_grade: " << form.getExecutionGrade();
+		<< ", signing grade: " << form.getSigningGrade() << ", execution grade: " << form.getExecutionGrade();
 	return o;
 }
