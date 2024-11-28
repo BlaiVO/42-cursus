@@ -1,36 +1,38 @@
-#include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 #include <stdio.h>
 
 int main(void)
 {
-	ShrubberyCreationForm	shrubbery = ShrubberyCreationForm("garden");
-	RobotomyRequestForm		robotomy = RobotomyRequestForm("robot");
-	PresidentialPardonForm	pardon = PresidentialPardonForm("Totally Innocent Dude");
+	{
+		Intern	intern;
+		AForm*	form = intern.makeForm("shrubbery creation", "tree");
 
-	Bureaucrat	president = Bureaucrat("President", 1);
-	Bureaucrat	intern = Bureaucrat("Intern", 150);
+		Bureaucrat bur = Bureaucrat("bur", 1);
+		bur.signForm(*form);
+		bur.executeForm(*form);
+	}
+	{
+		Intern	intern;
+		AForm*	form = intern.makeForm("robotomy request", "robot");
 
-	std::cout << "-----Shrubbery Tests-----" << std::endl;
-	intern.signForm(shrubbery);
-	president.executeForm(shrubbery);
-	president.signForm(shrubbery);
-	intern.executeForm(shrubbery);
-	president.executeForm(shrubbery);
+		Bureaucrat bur = Bureaucrat("bur", 1);
+		bur.signForm(*form);
+		bur.executeForm(*form);
+	}
+	{
+		Intern	intern;
+		AForm*	form = intern.makeForm("presidential pardon", "not that innocent dude");
 
-	std::cout << std::endl << "-----Robotomy Tests-----" << std::endl;
-	intern.signForm(robotomy);
-	president.executeForm(robotomy);
-	president.signForm(robotomy);
-	intern.executeForm(robotomy);
-	president.executeForm(robotomy);
+		Bureaucrat bur = Bureaucrat("bur", 1);
+		bur.signForm(*form);
+		bur.executeForm(*form);
+	}
+	{
+		Intern	intern;
+		AForm*	form = intern.makeForm("unexistent form", "target");
 
-	std::cout << std::endl << "-----Presidential Pardon Tests-----" << std::endl;
-	intern.signForm(pardon);
-	president.executeForm(pardon);
-	president.signForm(pardon);
-	intern.executeForm(pardon);
-	president.executeForm(pardon);
+		Bureaucrat bur = Bureaucrat("bur", 1);
+		bur.signForm(*form);
+		bur.executeForm(*form);
+	}
 }

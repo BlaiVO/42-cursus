@@ -7,8 +7,12 @@
 
 class Intern{
 	private:
+		AForm	*findForm(std::string form, std::string target);
+		AForm	*MakeShrubberyCreationForm(std::string target);
+		AForm	*MakeRobotomyRequestForm(std::string target);
+		AForm	*MakePresidentialPardonForm(std::string target);
 	public:
-		Intern(const std::string name, int grade);
+		Intern();
 		Intern(const Intern &copy);
 		Intern &operator= (const Intern &a);
 		~Intern();
