@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include "RobotomyRequestForm.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm("RobotomyRequestForm", 72, 45) {
@@ -27,6 +28,7 @@ std::string	RobotomyRequestForm::getTarget() const {
 void	RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 	AForm::checkExecutable(executor);
 	std::cout << "*Drilling noises*" << std::endl;
+	srand(time(0));
 	if (rand() % 2)
 		std::cout << this->_target << " has been successfully robotomized" << std::endl;
 	else
