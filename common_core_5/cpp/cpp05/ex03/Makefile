@@ -6,11 +6,14 @@ RM = rm -f
 SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
 	RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
 
+HEAD = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp \
+	RobotomyRequestForm.hpp PresidentialPardonForm.hpp Intern.hpp
+
 F_OBJ = obj/
 OBJ = $(addprefix $(F_OBJ), $(SRC:.cpp=.o))
 DEP = $(addprefix $(F_OBJ), $(SRC:.cpp=.d))
 
-all: dir $(NAME)
+all: dir $(NAME) $(HEAD)
 
 -include ${DEP}
 
