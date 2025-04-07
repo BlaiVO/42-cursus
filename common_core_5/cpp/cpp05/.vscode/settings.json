@@ -46,6 +46,7 @@
 		"optional": "cpp",
 		"numbers": "cpp",
 		"ranges": "cpp",
-		"cinttypes": "cpp"
+		"cinttypes": "cpp",
+		"fstream": "cpp"
 	}
 }
