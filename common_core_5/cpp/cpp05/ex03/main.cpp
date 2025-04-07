@@ -36,7 +36,7 @@ int main(void)
 		AForm*	form = intern.makeForm("unexistent form", "target");
 
 		if (form == NULL)
-			return 1; // remove this to see a beautiful segfault
+			return 1;
 		Bureaucrat bur = Bureaucrat("bur", 1);
 		bur.signForm(*form);
 		bur.executeForm(*form);

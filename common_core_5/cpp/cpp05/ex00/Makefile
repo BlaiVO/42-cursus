@@ -4,12 +4,13 @@ C_FLAGS = -Wall -Wextra -Werror -MMD -std=c++98
 RM = rm -f
 
 SRC = main.cpp Bureaucrat.cpp
+HEAD = Bureaucrat.hpp
 
 F_OBJ = obj/
 OBJ = $(addprefix $(F_OBJ), $(SRC:.cpp=.o))
 DEP = $(addprefix $(F_OBJ), $(SRC:.cpp=.d))
 
-all: dir $(NAME)
+all: dir $(NAME) $(HEAD)
 
 -include ${DEP}
 
