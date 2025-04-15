@@ -16,7 +16,6 @@ ScalarConverter &ScalarConverter::operator= (const ScalarConverter &a) {
 	return *this;
 }
 
-
 char getType(std::string num)
 {
 	std::string literals[6] = {"-inff", "+inff", "nanf", "-inf", "+inf", "nan"};
@@ -32,7 +31,7 @@ char getType(std::string num)
 		return 'i';
 	char *p2;
 	double converted_double = strtod(num.c_str(), &p2);
-	if (num.find('.') == std::string::npos)
+	if (num.find('.') == std::string::npos || num.find('.') == num.length() - 1)
 		goto undefined;
 	if (!*p2)
 		return 'd';
