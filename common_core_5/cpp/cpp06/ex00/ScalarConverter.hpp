@@ -1,5 +1,5 @@
 #ifndef SCALARCONVERTER_HPP
-# define BUREAUCRAT_HPP
+# define SCALARCONVERTER_HPP
 
 # include <string>
 
