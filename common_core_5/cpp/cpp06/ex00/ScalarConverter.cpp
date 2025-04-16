@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
-#include <climits>
-#include <iomanip>
-#include <cmath>
+#include <climits> // for INT_MAX and INT_MIN
+#include <iomanip> // for std::setprecision()
+#include <cmath> // for std::modf
 #include "ScalarConverter.hpp"
 
 ScalarConverter::ScalarConverter(){
@@ -16,6 +16,9 @@ ScalarConverter::ScalarConverter(const ScalarConverter &copy){
 ScalarConverter &ScalarConverter::operator= (const ScalarConverter &a) {
 	(void)a;
 	return *this;
+}
+
+ScalarConverter::~ScalarConverter(){
 }
 
 void casePseudoLiteral(std::string num)
