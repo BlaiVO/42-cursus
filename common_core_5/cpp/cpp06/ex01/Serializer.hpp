@@ -2,6 +2,8 @@
 # define SERIALIZER_HPP
 
 # include <string>
+# include <stdint.h>
+# include "Data.h"
 
 class Serializer
 {
@@ -11,7 +13,8 @@ class Serializer
 		Serializer &operator= (const Serializer &a);
 		~Serializer();
 	public:
-		static uintptr_t serialize(Data* ptr);;
+		static uintptr_t serialize(Data* ptr);
+		static Data *deserialize(uintptr_t raw);
 };
 
 #endif
