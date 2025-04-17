@@ -47,7 +47,7 @@ void caseChar(std::string num)
 		std::cout << "char: Non displayable" << std::endl;
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
 	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << 'f' << std::endl;
-	std::cout << "double: " << static_cast<double>(static_cast<double>(c)) << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << std::endl;
 }
 
 void caseInt(std::string num)
