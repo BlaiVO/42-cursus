@@ -92,9 +92,9 @@ void caseFloat(std::string num)
 	}
 	else
 	{
-		std::cout.precision(7);
+		std::cout.precision(10);
 		std::cout << "float: " << f << 'f' << std::endl;
-		std::cout.precision(7);
+		std::cout.precision(10);
 		std::cout << "double: " << f << std::endl;
 	}
 }
@@ -123,9 +123,9 @@ void caseDouble(std::string num)
 	}
 	else
 	{
-		std::cout.precision(7);
+		std::cout.precision(10);
 		std::cout << "float: " << static_cast<float>(d) << 'f' << std::endl;
-		std::cout.precision(16);
+		std::cout.precision(17);
 		std::cout << "double: " << d << std::endl;
 	}
 }
