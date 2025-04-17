@@ -61,8 +61,15 @@ void identify(Base &p)
 int main()
 {
     Base *base = generate();
+    Base *base2 = new Base();
     identify(base);
     identify(*base);
+
+    identify(base2);
+    identify(*base2);
+
+    delete base;
+    delete base2;
 
     return 0;
 }
