@@ -60,4 +60,5 @@ int main()
         std::cout << "Min: " << min(a, b) << std::endl;
         std::cout << "Max: " << max(a, b) << std::endl;
     }
+    return 0;
 }
