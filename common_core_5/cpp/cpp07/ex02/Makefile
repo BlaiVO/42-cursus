@@ -1,13 +1,14 @@
-NAME = iter
+NAME = array
 CC = c++
 C_FLAGS = -Wall -Wextra -Werror -MMD -std=c++98
 RM = rm -f
 
-SRC = main.cpp Array.tpp
+SRC = main.cpp
+TPP = Array.tpp
 HEAD = Array.hpp
 
 F_OBJ = obj/
-OBJ = $(addprefix $(F_OBJ), $(SRC:.cpp=.o))
+OBJ = $(addprefix $(F_OBJ), $(SRC:.cpp=.o)) #$(addprefix $(F_OBJ), $(SRC:.tpp=.o))
 DEP = $(addprefix $(F_OBJ), $(SRC:.cpp=.d))
 
 all: dir $(NAME) $(HEAD)
