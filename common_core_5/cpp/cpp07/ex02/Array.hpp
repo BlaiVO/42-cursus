@@ -11,7 +11,7 @@ class Array
         unsigned int _size;
     public:
         Array(){
-            this->_array = (T)NULL;
+            this->_array = NULL;
             this->_size = 0;
         }
 
