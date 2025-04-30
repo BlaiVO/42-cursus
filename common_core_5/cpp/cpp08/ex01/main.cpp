@@ -35,24 +35,54 @@ int main()
     }
     {
         std::cout << "----Huge Span test----" << std::endl;
-        int size = 10000;
-        Span sp(size);
+		Span sp = Span(50000);
 
-        std::vector<int> values(size * 100);
-        for (int i = 0; i < size * 100; ++i) {
-            values[i] = i + 1;
-        }
-
-        std::random_device rd;
-        std::mt19937 gen(rd());
-
-        std::srand(std::time(0));
-        std::shuffle(values.begin(), values.end(), gen);
-        for (int i = 0; i < size; i++)
-        {
-            sp.addNumber(values[i]);
-        }
+		std::vector<int>vec(50000);
+		for (int i = 0; i <= 50000; ++i)
+		{
+			vec[i] = (i + 1) * 2;
+		}
+		sp.addRange(vec.begin(), vec.end());
         std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
         std::cout << "Longest span: " << sp.longestSpan() << std::endl;
+    }
+    {
+        std::cout << "----Errors test----" << std::endl;
+        std::cout << "Trying addNumber, longestSpan and shortestSpan on a Span(0)" << std::endl; 
+        Span sp(0);
+        try {
+            sp.addNumber(4);
+        } catch (std::range_error e) {
+            std::cout << e.what() << std::endl;
+        }
+        try {
+            sp.longestSpan();
+        } catch (std::logic_error e) {
+            std::cout << e.what() << std::endl;
+        }
+        try {
+            sp.shortestSpan();
+        } catch (std::logic_error e) {
+            std::cout << e.what() << std::endl;
+        }
+        std::cout << std::endl << "Trying to add too many numbers with addRange" << std::endl;
+        sp = Span(5);
+        std::vector<int> v;
+        for (int i = 0; i < 6; i++)
+        {
+            v.push_back(i);
+        }
+        try {
+            sp.addRange(v.begin(), v.end());
+        } catch (std::range_error e) {
+            std::cout << e.what() << std::endl;
+        }
+        std::cout << std::endl << "Trying to pass v.end() as begin and v.begin() as end to addRange" << std::endl;
+        v.resize(5);
+        try {
+            sp.addRange(v.end(), v.begin());
+        } catch (std::out_of_range e) {
+            std::cout << e.what() << std::endl;
+        }
     }
 }

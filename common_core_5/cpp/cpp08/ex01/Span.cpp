@@ -31,16 +31,15 @@ Span::~Span(){};
 void Span::addNumber(int num)
 {
     if (this->_nums.size() >= this->_size)
-        throw std::range_error("Span elements limit reached");
+        throw std::range_error("addNumber: Span elements limit reached");
     else
         this->_nums.push_back(num);
-    //std::sort(this->_nums.begin(), this->_nums.end());
 }
 
 int Span::shortestSpan()
 {
-    if (this->_size < 2)
-        throw std::logic_error("Span must have at least 2 elements");
+    if (this->_nums.size() < 2)
+        throw std::logic_error("shortestSpan: Span must have at least 2 elements");
 	std::vector<int> tmp = this->_nums;
 	std::sort(tmp.begin(), tmp.end());
 	int min = tmp[1] - tmp[0];
@@ -56,9 +55,20 @@ int Span::shortestSpan()
 
 int Span::longestSpan()
 {
-    if (this->_size < 2)
-        throw std::logic_error("Span must have at least 2 elements");
+    if (this->_nums.size() < 2)
+        throw std::logic_error("longestSpan: Span must have at least 2 elements");
     std::pair<std::vector<int>::iterator, std::vector<int>::iterator> p;
     p = std::minmax_element(this->_nums.begin(), this->_nums.end());
     return *p.second - *p.first;
+}
+
+void	Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	if (begin >= end)
+		throw std::out_of_range("addRange: Inputs are out of range");
+
+	for (; begin != end; begin++)
+	{
+		this->addNumber(*begin);
+	}
 }
