@@ -40,7 +40,7 @@ int main()
 		std::vector<int>vec(50000);
 		for (int i = 0; i <= 50000; ++i)
 		{
-			vec[i] = (i + 1) * 2;
+			vec[i] = rand() % 100000;
 		}
 		sp.addRange(vec.begin(), vec.end());
         std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
@@ -48,7 +48,7 @@ int main()
     }
     {
         std::cout << "----Errors test----" << std::endl;
-        std::cout << "Trying addNumber, longestSpan and shortestSpan on a Span(0)" << std::endl; 
+        std::cout << "Trying addNumber, longestSpan and shortestSpan on a Span(0)" << std::endl;
         Span sp(0);
         try {
             sp.addNumber(4);
