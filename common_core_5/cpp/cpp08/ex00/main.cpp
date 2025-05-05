@@ -20,15 +20,15 @@ int main()
     deq.push_back(1);
 
     std::cout << "looking for 1 in std::vector: " << *easyfind(v, 1) << std::endl;
-    std::cout << "looking for 1 in std::deque: " <<*easyfind(deq, 1) << std::endl;
+    std::cout << "looking for 1 in std::deque: " << *easyfind(deq, 1) << std::endl;
     try {
         std::cout << "looking for 86 in std::vector: " << *easyfind(v, 86) << std::endl;
-    } catch (std::logic_error) {
+    } catch (std::logic_error const&) {
         std::cout << "86 not found" << std:: endl;
     }
     try {
      std::cout << "looking for 86 in std::deque: " << *easyfind(deq, 86) << std::endl;
-    } catch (std::logic_error) {
+    } catch (std::logic_error const&) {
         std::cout << "86 not found" << std:: endl;
     }
 
