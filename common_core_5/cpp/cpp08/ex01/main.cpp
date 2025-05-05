@@ -1,8 +1,7 @@
 #include <iostream>
 #include <cstdlib>
+#include <ctime>
 #include "Span.hpp"
-
-#include <random>
 
 int main()
 {
@@ -52,17 +51,17 @@ int main()
         Span sp(0);
         try {
             sp.addNumber(4);
-        } catch (std::range_error e) {
+        } catch (std::range_error const &e) {
             std::cout << e.what() << std::endl;
         }
         try {
             sp.longestSpan();
-        } catch (std::logic_error e) {
+        } catch (std::logic_error const &e) {
             std::cout << e.what() << std::endl;
         }
         try {
             sp.shortestSpan();
-        } catch (std::logic_error e) {
+        } catch (std::logic_error const &e) {
             std::cout << e.what() << std::endl;
         }
         std::cout << std::endl << "Trying to add too many numbers with addRange" << std::endl;
@@ -74,14 +73,14 @@ int main()
         }
         try {
             sp.addRange(v.begin(), v.end());
-        } catch (std::range_error e) {
+        } catch (std::range_error const &e) {
             std::cout << e.what() << std::endl;
         }
         std::cout << std::endl << "Trying to pass v.end() as begin and v.begin() as end to addRange" << std::endl;
         v.resize(5);
         try {
             sp.addRange(v.end(), v.begin());
-        } catch (std::out_of_range e) {
+        } catch (std::out_of_range const &e) {
             std::cout << e.what() << std::endl;
         }
     }

@@ -39,8 +39,10 @@ void Span::addNumber(int num)
 int Span::shortestSpan()
 {
     if (this->_nums.size() < 2)
+    {
         throw std::logic_error("shortestSpan: Span must have at least 2 elements");
-	std::vector<int> tmp = this->_nums;
+    }
+    std::vector<int> tmp = this->_nums;
 	std::sort(tmp.begin(), tmp.end());
 	int min = tmp[1] - tmp[0];
 	for (unsigned int i = 1; i < tmp.size(); i++)
@@ -57,9 +59,9 @@ int Span::longestSpan()
 {
     if (this->_nums.size() < 2)
         throw std::logic_error("longestSpan: Span must have at least 2 elements");
-    std::pair<std::vector<int>::iterator, std::vector<int>::iterator> p;
-    p = std::minmax_element(this->_nums.begin(), this->_nums.end());
-    return *p.second - *p.first;
+    std::vector<int>::iterator max = std::max_element(this->_nums.begin(), this->_nums.end());
+    std::vector<int>::iterator min = std::min_element(this->_nums.begin(), this->_nums.end());
+    return *max - *min;
 }
 
 void	Span::addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end)
