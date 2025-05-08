@@ -14,7 +14,7 @@ class BitcoinExchange
 		//BitcoinExchange &operator=(const BitcoinExchange &a);
 		~BitcoinExchange();
 		void process_line(std::string line);
-
+		bool is_initialized;
 };
 
 #endif
