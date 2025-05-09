@@ -11,10 +11,10 @@ class BitcoinExchange
 	public:
 		BitcoinExchange();
 		BitcoinExchange(const BitcoinExchange &copy);
-		//BitcoinExchange &operator=(const BitcoinExchange &a);
+		BitcoinExchange &operator=(const BitcoinExchange &a);
 		~BitcoinExchange();
-		void process_line(std::string line);
 		bool is_initialized;
+		void process_line(std::string line);
 };
 
 #endif

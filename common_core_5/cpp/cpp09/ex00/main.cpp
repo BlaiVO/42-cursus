@@ -5,9 +5,15 @@
 
 int main(int argc, char **argv)
 {
-	if (argc != 2)
+	if (argc < 2)
 	{
-		std::cerr << "Error: Invalid number of arguments" << std::endl;
+		std::cerr << "Error: could not open file." << std::endl;
+		return 1;
+	}
+
+	if (argc > 2)
+	{
+		std::cerr << "Error: too many files." << std::endl;
 		return 1;
 	}
 
@@ -17,17 +23,25 @@ int main(int argc, char **argv)
 
 	if (!ifile)
 	{
-		std::cerr << "Error: File could not be opened" << std::endl;
+		std::cerr << "Error: could not open file." << std::endl;
+		return 1;
+	}
+
+	if (!btc.is_initialized)
+	{
+		std::cerr << "Error: Error parsing data file." << std::endl;
 		return 1;
 	}
 
 	getline(ifile, line);
+
 	if (line != "date | value")
 		btc.process_line(line);
 
 	while (getline(ifile, line))
-		std::cout << line << std::endl;
+	{
+		btc.process_line(line);
+	}
 
 	ifile.close();
-
 }
