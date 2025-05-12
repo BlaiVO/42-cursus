@@ -1,4 +1,7 @@
 #include <iostream>
+#include <cstdlib>
+#include <climits>
+#include <algorithm>
 #include "PmergeMe.hpp"
 
 PmergeMe::PmergeMe()
@@ -56,29 +59,54 @@ bool is_sorted_vector(std::vector<int> vect)
     return true;
 }
 
+void vector_swap_pair(std::vector<int> &vect, int p_size ,int p1, int p2)
+{
+    //* v = {4, 3, 2, 1}
+    for (int i = 0; i < p_size; i++)
+    {
+        int aux = vect[p2 + i];
+        vect[p2 + i] = vect[p1 + i];
+        vect[p1 + i] = aux;
+        std::cout << "SWAPPING RESULT: vect[" << p1 + 1 <<"] = " << vect[p1 + i] << ", vect[" << p2 + i << "] = " << vect[p2 + i] << std::endl;
+    }
+}
+
 void PmergeMe::sort_vector()
 {
-    int group_size = 2;
-
-    std::cout << "level 0" << std::endl;
+    int p_size = 2;
+    int size = (int)vect.size();
     while (!is_sorted_vector(vect))
     {
-        std::cout << "level 1" << std::endl;
-        for (int i = 0; i < (int)vect.size(); i++)
+        std::cout << "\nwhile: p_size = " << p_size << std::endl;
+        std::cout << "While: vect = ";
+        this->print_vector();
+        if (size % 2 != 0 && p_size == size - 1)
         {
-          std::cout << "level 2" << std::endl;
-            if (vect[i] > vect[i + (group_size/2)])
+            if (vect[size] - 1)
             {
-            std::cout << "level 3" << std::endl;
-                for (int y = 0; y < group_size/2; y++)
-                {
-                    std::cout << "level 4" << std::endl;
-                    int aux = vect[i + y];
-                    vect[i + y] = vect[i + (group_size/2) + y];
-                    vect[i + (group_size/2) + y] =  aux;
-                }
+                vect.insert(vect.begin(), vect[size - 1]);
+                vect.pop_back();
             }
         }
+        int i = 0;
+        while(i < size)
+        {
+            std::cout << "\nfor: i = " << i << std::endl;
+            std::cout << "for: i + (p_size / 2) = " << i + (p_size / 2) << std::endl;
+            //std::cout << "for: vect[i], vect[i] = " << i + (p_size / 2) << std::endl;
+            if (vect[i] > vect[i  + (p_size / 2)])
+            {
+                std::cout << "calling vector_swap_pair" << std::endl;
+                vector_swap_pair(vect, p_size / 2, i, i + (p_size / 2));
+            }
+            i += p_size;
+        }
+        if (p_size > size)
+        {
+            std::cout << "ERROR: OOB" << std::endl;
+            return;
+        }
+        p_size *= 2;
     }
 }
 
