@@ -21,42 +21,73 @@ RPN &RPN::operator=(const RPN &a)
 RPN::~RPN()
 {}
 
-void error()
+void error(std::string msg = "")
 {
-    std::cout << "Error" << std::endl;
-    //return 1;
+    std::cout << "Error";
+    if (msg != "")
+        std::cout << ": " << msg;
+    std::cout << std::endl;
 }
 
-bool validate_input(std::string input_string, std::stack<char> &input) {
-    std::string valid_tokens = "+-/*0123456789";
-    for (long unsigned int i = 0; i < input_string.length(); i++)
+bool RPN::parse_input(std::string input_string)
+{
+    if (input_string.find_first_not_of(" +-/*0123456789") != std::string::npos)
+        return false;
+    for (int i = (int)input_string.length() - 1; i >= 0; i--)
     {
-        std::cout << "LAP" << std::endl;
-        if (valid_tokens.find(input_string[i]) == std::string::npos)
-        {
-            std::cout << "Error 1:" << std::endl;
+        if (input_string[i] == ' ')
             return false;
-        }
-        input.push(input_string[i]);
-        if (i + 1 < input_string.length())
-        {
-            if (input_string[++i] != ' ')
-            {
-                std::cout << "Error 2" << std::endl;
-                return false;
-            }
-        }
+        this->input.push(input_string[i]);
+        if (i != 0 and input_string[--i] != ' ')
+            return false;
     }
-    return input_string[input_string.length() - 1] != ' ';
+    return input_string[0] != ' ';
+}
+
+float operate(char op, float n1, float n2)
+{
+    switch (op)
+    {
+    case '+':
+        return n1 + n2;
+        break;
+    case '-':
+        return n1 - n2;
+        break;
+    case '*':
+        return n1 * n2;
+        break;
+    case '/':
+        return n1 / n2;
+        break;
+    default:
+        return (0);
+        break;
+    }
 }
 
 void RPN::calculate(std::string input_string) {
-
-    if (!validate_input(input_string, this->stack))
-        return error();
+    std::string operators = "+-/*";
+    if (!parse_input(input_string))
+        return error("malformed input");
+    while (!input.empty())
+    {
+        if (operators.find(input.top()) != std::string::npos) {
+            if (stack.size() < 2)
+                return error("not enough numbers to operate");
+            float n2 = stack.top();
+            stack.pop();
+            float n1 = stack.top();
+            stack.pop();
+            if (input.top() == '/' && n2 == 0)
+                return error("division by zero");
+            stack.push(operate(input.top(), n1, n2));
+        }
+        else
+            stack.push((float)(input.top() - '0'));
+        input.pop();
+    }
+    if (stack.size() != 1)
+        return error("missing operators");
+    std::cout << stack.top() << std::endl;
 }
-
-
-
-
-

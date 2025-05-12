@@ -5,14 +5,15 @@
 # include <string>
 class RPN {
     private:
-        std::stack<int> stack;
+        std::stack<float> stack;
         std::stack<char> input;
+        bool parse_input(std::string input_string);
+    public:
         RPN();
         RPN(const RPN &copy);
         RPN &operator=(const RPN &a);
-    public:
         ~RPN();
-        static void calculate(std::string input_string);
+        void calculate(std::string input_string);
 };
 
 #endif
