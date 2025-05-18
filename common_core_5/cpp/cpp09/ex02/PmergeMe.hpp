@@ -6,7 +6,6 @@
 
 class PmergeMe {
     private:
-        std::deque<int> deq;
     public:
         PmergeMe();
         PmergeMe(const PmergeMe &copy);
